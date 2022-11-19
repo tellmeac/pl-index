@@ -4,8 +4,10 @@ File indexing
 
 ## How to run
 
+Загрузить сборку
+
 ```bash
-go run main.go
+./app
 ```
 
 После, открываем http://localhost:8080

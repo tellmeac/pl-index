@@ -2,9 +2,12 @@ package main
 
 import (
 	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/contrib/static"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
+
+const staticFilesPath = "./assets"
 
 func main() {
 	app := App{}
@@ -19,7 +22,7 @@ func main() {
 		AllowMethods: []string{http.MethodDelete, http.MethodGet},
 	}))
 
-	engine.StaticFile("/", "./assets/index.html")
+	engine.Use(static.Serve("/", static.LocalFile(staticFilesPath, true)))
 
 	api := engine.Group("api/")
 	{
