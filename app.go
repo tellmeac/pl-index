@@ -19,9 +19,7 @@ type Item struct {
 	IsDir   bool   `json:"isDir"`
 }
 
-type App struct{}
-
-func (ah App) ListDir(ctx *gin.Context) {
+func ListDir(ctx *gin.Context) {
 	path := ctx.Query("path")
 	if path == "" {
 		path = "/"
@@ -57,7 +55,7 @@ func (ah App) ListDir(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, indexResponse)
 }
 
-func (ah App) DeleteItem(ctx *gin.Context) {
+func DeleteItem(ctx *gin.Context) {
 	path := ctx.Query("path")
 	if path == "" {
 		ctx.JSON(http.StatusBadRequest, gin.H{

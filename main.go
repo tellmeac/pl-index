@@ -10,8 +10,6 @@ import (
 const staticFilesPath = "./assets"
 
 func main() {
-	app := App{}
-
 	engine := gin.Default()
 	engine.Use(cors.New(cors.Config{
 		AllowAllOrigins: true,
@@ -26,8 +24,8 @@ func main() {
 
 	api := engine.Group("api/")
 	{
-		api.GET("index", app.ListDir)
-		api.DELETE("remove", app.DeleteItem)
+		api.GET("index", ListDir)
+		api.DELETE("remove", DeleteItem)
 	}
 
 	if err := http.ListenAndServe(":8080", engine); err != nil {
